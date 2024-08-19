@@ -1,6 +1,6 @@
 import { Products } from "src/entities/products.entity";
 
-const productsMock: Products[] = [
+export const productsMock: Products[] = [
   {
     id: 1,
     name: 'Product 1',
@@ -42,7 +42,3 @@ const productsMock: Products[] = [
     imgUrl: 'https://via.placeholder.com/150'
   }
 ];
-
-export const mocksProducts = {
-  getProducts: () => productsMock
-}

@@ -6,23 +6,23 @@ import { User } from 'src/entities/user.entity';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   @Get()
-  getUsers(): User[] {
+  getUsers() {
     return this.usersService.getUsers();
-  }
+  } 
   @Get(':id')
-  getUserById(@Param('id') id: number): User {
+  getUserById(@Param('id') id: string) {
     return this.usersService.getUserById(id);
   }
   @Post()
-  createUser(@Body() newUser: User): User[] {
-    return this.usersService.createUser(newUser);
+  createUser(@Body() user: User) {
+    return this.usersService.createUser(user);
   }
   @Put(':id')
-  updateUser(@Param('id') id: number, @Body() updateUser: User): User[] {
-    return this.usersService.updateUser(updateUser);
+  updateUser(@Param('id') id: string, @Body() user: User) {
+    return this.usersService.updateUser(id, user);
   }
   @Delete(':id')
-  deleteUser(@Param('id') id: number): User[] {
+  deleteUser(@Param('id') id: string) {
     return this.usersService.deleteUser(id);
   }
 }

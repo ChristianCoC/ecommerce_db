@@ -1,6 +1,6 @@
 import { User } from "src/entities/user.entity";
 
-const usersMock: User[] = [
+export const usersMock: User[] = [
   {
     id: 1,
     name: 'User Uno',
@@ -52,7 +52,3 @@ const usersMock: User[] = [
     city: 'City 5'
   }
 ];
-
-export const mockUsers = {
-  getUsers:() => usersMock
-};

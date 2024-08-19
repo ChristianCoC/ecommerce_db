@@ -1,22 +1,28 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { Products } from "src/entities/products.entity";
+import { productsMock } from "src/mocks/products.mocks";
 
 @Injectable()
 export class ProductsRepository {
-  constructor(private readonly productsRepository: Products[]) { }
+  private products: Products[] = productsMock;
   getProducts() {
-    return this.productsRepository;
+    return this.products;
   }
-  getProductsById() {
-    return this.productsRepository;
+  getProductsById(id : string) {
+    return this.products.find((product) => product.id === Number(id));
   }
-  createProducts() {
-    return this.productsRepository;
+  createProducts(products: Products){
+    this.products.push(products);
+    return products;
   }
-  updateProducts() {
-    return this.productsRepository;
+  updateProducts(id: string, updateProducts: Products) {
+    const index = this.products.findIndex((product) => product.id === Number(id));
+    this.products[index] = updateProducts;
+    return updateProducts;
   }
-  deleteProducts() {
-    return this.productsRepository;
+  deleteProducts(id: string) {
+    const index = this.products.findIndex((product) => product.id === Number(id));
+    const deleteProducts = this.products.splice(index, 1);
+    return deleteProducts;
   }
 }

@@ -5,19 +5,19 @@ import { User } from 'src/entities/user.entity';
 @Injectable()
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) { }
-  getUsers(): User[] {
+  getUsers() {
     return this.usersRepository.getUsers();
   }
-  getUserById(id: number): User {
+  getUserById(id: string) {
     return this.usersRepository.getUserById(id);
   }
-  createUser(newUser: User): User[] {
-    return this.usersRepository.createUser(newUser);
+  createUser(user: User) {
+    return this.usersRepository.createUser(user);
   }
-  updateUser(updateUser: User): User[] {
-    return this.usersRepository.updateUser(updateUser);
+  updateUser(id: string, user: User) {
+    return this.usersRepository.updateUser(id, user);
   }
-  deleteUser(id: number): User[] {
+  deleteUser(id: string) {
     return this.usersRepository.deleteUser(id);
   }
 }
