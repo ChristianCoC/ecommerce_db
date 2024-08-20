@@ -5,8 +5,8 @@ import { User } from 'src/entities/user.entity';
 @Injectable()
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) { }
-  getUsers() {
-    return this.usersRepository.getUsers();
+  getUsers(page: number, limit: number) {
+    return this.usersRepository.getUsers(page, limit);
   }
   getUserById(id: string) {
     return this.usersRepository.getUserById(id);

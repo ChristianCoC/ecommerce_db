@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from 'src/entities/user.entity';
 
@@ -6,8 +6,8 @@ import { User } from 'src/entities/user.entity';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   @Get()
-  getUsers() {
-    return this.usersService.getUsers();
+  getUsers(@Query('page') page: number = 1, @Query('limit') limit: number = 5) {
+    return this.usersService.getUsers(page, limit);
   } 
   @Get(':id')
   getUserById(@Param('id') id: string) {

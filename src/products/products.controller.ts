@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { Products } from 'src/entities/products.entity';
 
@@ -6,8 +6,8 @@ import { Products } from 'src/entities/products.entity';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
   @Get()
-  getProducts() {
-    return this.productsService.getProducts(); 
+  getProducts(@Query('page') page: number = 1, @Query('limit') limit: number = 5) {
+    return this.productsService.getProducts(page, limit); 
   }
   @Get(':id')
   getProductsById(@Param('id') id: string) {
