@@ -1,10 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { User } from "src/entities/user.entity";
-import { usersMock } from "src/mocks/users.mocks";
 
 @Injectable()
 export class UsersRepository {
-  private users: User[] = usersMock;
+  private users: User[];
   getUsers(page: number, limit: number) {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;

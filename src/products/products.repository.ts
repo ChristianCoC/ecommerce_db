@@ -1,10 +1,9 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { Products } from "src/entities/products.entity";
-import { productsMock } from "src/mocks/products.mocks";
 
 @Injectable()
 export class ProductsRepository {
-  private products: Products[] = productsMock;
+  private products: Products[];
   getProducts(page: number, limit: number) {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
