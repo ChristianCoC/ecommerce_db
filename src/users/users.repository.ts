@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { User } from "src/entities/user.entity";
+import { Users } from "src/entities/user.entity";
 
 @Injectable()
 export class UsersRepository {
-  private users: User[];
+  private users: Users[];
   getUsers(page: number, limit: number) {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
@@ -18,12 +18,12 @@ export class UsersRepository {
     const { password, ...rest } = userId;
     return rest;
   }
-  createUser(user: User): User | string {
+  createUser(user: Users): Users | string {
     this.users.push(user);
     const message = `User with id ${user.id} created`;
     return message;
   }
-  updateUser(id: string, user: User): User | string {
+  updateUser(id: string, user: Users): Users | string {
     const index = this.users.findIndex((user) => user.id === Number(id));
     this.users[index] = user;
     const message = `User with id ${user.id} updated`;

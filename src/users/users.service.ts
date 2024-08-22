@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
-import { User } from 'src/entities/user.entity';
+import { Users } from 'src/entities/user.entity';
 
 @Injectable()
 export class UsersService {
@@ -11,10 +11,10 @@ export class UsersService {
   getUserById(id: string) {
     return this.usersRepository.getUserById(id);
   }
-  createUser(user: User) {
+  createUser(user: Users) {
     return this.usersRepository.createUser(user);
   }
-  updateUser(id: string, user: User) {
+  updateUser(id: string, user: Users) {
     return this.usersRepository.updateUser(id, user);
   }
   deleteUser(id: string) {
