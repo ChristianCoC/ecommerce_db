@@ -14,7 +14,7 @@ export class UsersRepository {
     return omitPassword.slice(startIndex, endIndex);
   }
   getUserById(id: string) {
-    const userId = this.users.find((user) => user.id === Number(id));
+    const userId = this.users.find((user) => user.id === (id));
     const { password, ...rest } = userId;
     return rest;
   }
@@ -24,13 +24,13 @@ export class UsersRepository {
     return message;
   }
   updateUser(id: string, user: Users): Users | string {
-    const index = this.users.findIndex((user) => user.id === Number(id));
+    const index = this.users.findIndex((user) => user.id === (id));
     this.users[index] = user;
     const message = `User with id ${user.id} updated`;
     return message;
   }
   deleteUser(id: string) {
-    const index = this.users.findIndex((user) => user.id === Number(id));
+    const index = this.users.findIndex((user) => user.id === (id));
     const deletedUser = this.users.splice(index, 1);
     const message = `User with id ${deletedUser[0].id} deleted`;
     return message;

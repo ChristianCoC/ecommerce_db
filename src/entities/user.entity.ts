@@ -1,3 +1,4 @@
+import { UUID } from "crypto";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({
@@ -5,14 +6,14 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 })
 export class Users {
 
-  @PrimaryGeneratedColumn('uuid', {
+  @PrimaryGeneratedColumn({
     name: 'id'
   })
-  id: number;
+  id: UUID;
 
   @Column({
     name: 'name',
-    type: 'string',
+    type: 'varchar',
     nullable: false,
     length: 50
   })
@@ -20,7 +21,7 @@ export class Users {
 
   @Column({
     name: 'email',
-    type: 'string',
+    type: 'varchar',
     nullable: false,
     unique: true,
     length: 50
@@ -29,7 +30,7 @@ export class Users {
 
   @Column({
     name: 'password',
-    type: 'string',
+    type: 'varchar',
     nullable: false
   })
   password: string;
@@ -38,24 +39,24 @@ export class Users {
     name: 'phone',
     type: 'int',
   })
-  phone: string;
+  phone: number;
   
   @Column({
     name: 'country',
-    type: 'string',
+    type: 'varchar',
     length: 50
   })
   country: string;
 
   @Column({
     name: 'address',
-    type: 'string',
+    type: 'varchar',
   })
   address: string;
 
   @Column({
     name: 'city',
-    type: 'string',
+    type: 'varchar',
     length: 50
   })
   city: string;

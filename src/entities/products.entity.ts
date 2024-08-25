@@ -1,3 +1,4 @@
+import { UUID } from "crypto";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({
@@ -5,14 +6,14 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 })
 export class Products {
 
-  @PrimaryGeneratedColumn('uuid', {
+  @PrimaryGeneratedColumn({
     name: 'id',
   })
-  id: number;
+  id: UUID;
 
   @Column({
     name: 'name',
-    type: 'string',
+    type: 'varchar',
     nullable: false,
     length: 50
   })
@@ -20,14 +21,14 @@ export class Products {
 
   @Column({
     name: 'description',
-    type: 'string',
+    type: 'varchar',
     nullable: false
   })
   description: string;
 
   @Column({
     name: 'price',
-    type: 'float',
+    type: 'decimal',
     nullable: false,
     precision: 10,
     scale: 2
@@ -36,14 +37,14 @@ export class Products {
 
   @Column({
     name: 'stock',
-    type: 'number',
+    type: 'int',
     nullable: false
   })
-  stock: boolean;
+  stock: number;
 
   @Column({
     name: 'imgUrl',
-    type: 'string',
+    type: 'varchar',
     default: 'https://via.placeholder.com/150',
   })
   imgUrl: string;

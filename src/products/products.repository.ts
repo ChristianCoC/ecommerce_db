@@ -10,7 +10,7 @@ export class ProductsRepository {
     return this.products.slice(startIndex, endIndex);
   }
   getProductsById(id : string) {
-    const productId = this.products.find((product) => product.id === Number(id));
+    const productId = this.products.find((product) => product.id === (id));
     return productId;
   }
   createProducts(products: Products): Products | string {
@@ -19,13 +19,13 @@ export class ProductsRepository {
     return message;
   }
   updateProducts(id: string, updateProducts: Products): Products | string {
-    const index = this.products.findIndex((product) => product.id === Number(id));
+    const index = this.products.findIndex((product) => product.id === (id));
     this.products[index] = updateProducts;
     const message = `Product with id ${updateProducts.id} updated`;
     return message;
   }
   deleteProducts(id: string) {
-    const index = this.products.findIndex((product) => product.id === Number(id));
+    const index = this.products.findIndex((product) => product.id === (id));
     const deleteProducts = this.products.splice(index, 1);
     const message = `Product with id ${deleteProducts[0].id} deleted`;
     return message;
